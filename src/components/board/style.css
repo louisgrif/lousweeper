@@ -1,0 +1,12 @@
+.board {
+    width: 100vw;
+    height: 100vh;
+    background-color: #999;
+    border: #222 2px solid;
+
+    margin: 0px; padding: 0px; border: 0px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}

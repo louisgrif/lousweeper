@@ -1,0 +1,16 @@
+.block {
+    width: 25px;
+    height: 25px;
+    background-color: #999;
+    margin: 0px; padding: 0px;
+    border: #222 1px solid;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.block-image {
+    width: 20px;
+    height: 20px;
+}
