@@ -1,5 +1,5 @@
 import './style.css';
-import { default as Block } from '../block/index';
+import { default as Block } from './block/index';
 import { useState } from 'react';
 
 import zeroSrc from './assets/zero.svg';
@@ -12,9 +12,9 @@ import sixSrc from './assets/six.svg';
 import sevenSrc from './assets/seven.svg';
 import mineSrc from './assets/mine.svg';
 
-const Board = ({ numX, numY, numMines }) => {
+const Board = ({ numX, numY, numMines, setDifficulty }) => {
     const[gameState, setGameState] = useState(0);
-    const[mineCount, setMineCount] = useState(numMines);
+    const[mineCount, setMineCount] = useState(0);
     const[gameBoard, setGameBoard] = useState([[1,1,1,1,1],[2,2,2,2,2],[-1,-1,-1,-1,-1],[1,1,1,1,1],[1,1,1,1,1],[3,2,1,2,2]]);
 
     const genBoard = (numX, numY, numMines) => {
@@ -27,7 +27,7 @@ const Board = ({ numX, numY, numMines }) => {
         //Generate mine squares randomly
         let tempBoard = new Array(numSquares);
         tempBoard.fill(0);
-        let randomNum = -1; let index = 0;
+        let randomNum = -1; let index = 0; 
         while(index < numMines){
             randomNum = Math.floor(Math.random() * numSquares);
             if(tempBoard[randomNum] === 0){
@@ -73,7 +73,10 @@ const Board = ({ numX, numY, numMines }) => {
 
     return(
         <div className="board" onContextMenu={(e)=> e.preventDefault()}>
-            <button onClick={() => genBoard(20, 15, 100)} />
+            <div className="sidebar">
+                <button onClick={() => genBoard(20, 15, 100)}>Pause</button>
+                <button onClick={() => setDifficulty(0)}>Back</button>
+            </div>
             {gameBoard.map((collumn) => { return(
                 <tc> {
                     collumn.map((square) => 
